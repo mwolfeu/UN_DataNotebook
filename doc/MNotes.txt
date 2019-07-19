@@ -1,0 +1,21 @@
+DATA NOTEBOOK 
+	earliest datapoint 	/ % slope change
+Select dataset  https://atlas.media.mit.edu/en/resources/data/
+	NOTEBOOK interface.
+	health of indicators
+	Filter Questions: year, text description, !country, etc.
+		ex: economy energy consumption resources... 
+		
+		Historical data about country
+	Suggested indicators
+	Saving indicators
+	ML - slope
+	end goals
+	forms - questions -> filters
+	print/save indicators
+	per indicator suggestions
+	per indicator health
+	per indicator graph
+	Aggregate graph
+	Look at pdf she sent me.
+	export csv?

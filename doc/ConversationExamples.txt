@@ -1,0 +1,44 @@
+INTERACTIONS
+
+Capabilities:
+Search / by text / by slope
+Display health
+Filter / year / text description
+Graph
+
+Additional functionality:
+  If I am searching on "talking points" or other documents, I need examples of each.
+
+INTRO:
+Welcome to the Data Notebook.  I can help you find and explore various indicators. 
+
+START:
+  You have no indicators selected. Type some keywords and I will search for matches. (Ind name, description text, UN doc)
+    Select the indicators to the right that interest you and hit "proceed".  
+  
+  Would you like to list your indicators, change filters, look at metadata or find new ones?
+    All the indicators you have chosen are listed to the right.
+  
+Keyword - SEARCH:
+  Great.  I can search for indicators by keyword or find indicators with similar slope. Which would you prefer?
+    Please type in the keywords you would be looking for and I will display the matches in the right panel.
+    Select the indicators to the right whose slope you want to match and hit "proceed".
+  
+Keyword - FILTER: (I can filter on any col/row in dataset that we care about. Two examples below.)
+  You currently have x indicators selected.  I can filter these based on year, country, etc.  How would you like to proceed? 
+    Would you like to set a start year or end year filter?
+      What start year would you like to set?
+      What end year would you like to set?
+    What countries or regions interest you?
+      Excellent. I have added this to your filters above.
+      I don't know the region/country X.  Should I add it anyway?
+    Are there any other filters you would like to create?  
+    
+Keyword - METADATA:
+  You currently have x indicators selected. I have displayed the health metadata for your indicators off to the right.
+    
+Keyword - GRAPH:
+  How would you like to graph the indicators?
+      Type in the names of the indicators or select the indicators to the right and hit "proceed".
+      
+Keyword - SAVE: Are we doing this?
