@@ -1,157 +1,57 @@
- var config = {
-    content: [{
-        type: 'row',
-      content:[{
-            type: 'column',
-            content:[{
-                type: 'component',
-                componentName: 'notebook',
-                title:'Notebook'
-            },{
-                type: 'component',
-                componentName: 'chat',
-                title:'Chat'
-            }]
-        },{
-        type: 'stack',
-        width: 60,
-        content:[{
-              type: 'component',
-              componentName: 'output',
-              title:'Output'
-          }]
-      },]
-    }]
+/*
+TODO:
+half half  
+left/right conversation w next button
+Submit vars (name, argN, BOOL:edit,del)
+Submit results (name, URLS)
+
+
+*/
+
+DNB = {}; // Global Vars
+
+var ds = {
+	obj: new dataset,
+	WDIcols: range(1960, 2018)
+}
+
+// each dataset is preprocessed to contain a country,year col and only the desired indicators
+// exceptions values can be Number for default number conversion or bespoke function
+var dsImportList = {				// list of all indicators
+  "myWDI.csv":{											
+    exceptions:ds.WDIcols,
+    initFcn: WDI_init
+  }
 };
 
-var myLayout = new GoldenLayout( config );
+var datasetDesc = {};
 
-myLayout.registerComponent( 'notebook', function( container, state ){
-    var content = $(`
-      <style>
-        .nbItemContainer {
-          display: flex;
-          margin: 10px;
-          background-color: #00b09e;
-          border: 5px solid #00b09e;
-          border-radius: 5px;display: flex:
-        }
-        
-        .nbItemIcon {
-          float: left;
-          width: 20px;
-          height: 20px;
-          
-          background-color: white;
-          border: 5px solid white;
-          border-radius: 25%;
-          margin: 2px;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-        
-        #edit {
-          background-image: url('img/pencil-alt-solid.svg');
-        }
-        
-        #delete {
-          background-image: url('img/times-solid.svg');
-        }
-        
-        .nbPic{
-          width: 100px;
-          margin: 5px;
-        }
-        
-        .nbIndicator {
-          background-color: #fafafa;
-          margin: 5px;
-          height: min-content;
-          border: 1px solid darkgrey;
-          border-radius: 10px;
-          padding: 5px;
-        }
-        
-        .nbIndX {
-          background-image: url('img/times-circle-regular.svg');
-          background-repeat: no-repeat;
-          background-position: center;
-          width: 15px;
-          height: 15px;
-          display: inline-block;
-          margin-left: 5px;
-        }
-      </style>
-      
-      <div style="margin: 50px;">This would be user state stored in notebook form (graphs, filters, indicators).</div>
-      
-      <div>
-        <div style="margin: 10px;"> <b>Countries</b> </div>
-        <div class="nbItemContainer">
-          <div style="margin-right: auto;"> My-Countries </div>
-          <div class="nbIndicator">Chad <div class="nbIndX"></div> </div>
-          <div class="nbIndicator">Libya <div class="nbIndX"></div> </div>
-          <div class="nbIndicator">Mali <div class="nbIndX"></div> </div>
-          <div class="nbIndicator">Niger <div class="nbIndX"></div> </div>
-          
-          <div id="edit" class="nbItemIcon"></div>
-          <div id="delete" class="nbItemIcon"></div>
-        </div>  
-      
-      
-        <div style="margin: 10px;"> <b>Indicators</b> </div>
-        <div class="nbItemContainer">
-          <div style="margin-right: auto;"> My-Sahel-Indicators </div>
-          <div class="nbIndicator">MMR_ISA_CR <div class="nbIndX"></div> </div>
-          <div class="nbIndicator">VDA_ISA_GD <div class="nbIndX"></div> </div>
-          <div class="nbIndicator">IMR_ISA_CR <div class="nbIndX"></div> </div>
-          
-          <div id="edit" class="nbItemIcon"></div>
-          <div id="delete" class="nbItemIcon"></div>
-        </div>     
-        
-        <div style="margin: 10px;"> <b>Year Filter</b> </div>
-        <div class="nbItemContainer">
-          <div style="margin-right: auto;"> Range: 1990-2010 </div>
-          <div id="edit" class="nbItemIcon"></div>
-          <div id="delete" class="nbItemIcon"></div>
-        </div>
-        
-        <div style="margin: 10px;"> <b>Saved Graphs</b> </div>
-        <div class="nbItemContainer">
-          <div style="margin-right: auto;"> Named Set 1 </div>
-          <img class="nbPic" src="img/imr-mmr-example-graph.png"/>
-          <img class="nbPic" src="img/imr2-example.gif"/>
-          <div id="delete" class="nbItemIcon"></div>
-        </div>       
-      </div>
-    `);
+function datasetRegister(name, desc) {
+  datasetDesc[name] = desc;
+}
+
+//////////
+// MAIN //
+//////////
+$(document).ready(function() {
+  
+  var cfg = [
+    {
+      title: "Indicators",
+      target: "#nb-item-container",
+      handler: indicatorItemHandler,
+      label: "myIndicators",
+      buttons: [{show:"always", label:"Edit", icon:"pencil-alt-solid.svg"},
+                {show:"on-select", label:"Remove", icon:"times-solid.svg"}],
+      prefs: ["Sort by Alpha"]
+    }
+    ];
     
-  container.getElement().append( content );
-    
-  });
+  managerInit(cfg);
+  ds.obj.init(dsImportList); // init datasets
   
-myLayout.registerComponent( 'chat', function( container, state ){
-  var content = $('<img src="img/chat-example.png" />');
-  
-  container.getElement().append( content );
-  });
-  
-myLayout.registerComponent( 'output', function( container, state ){
-  var content = $(`
-    <div style="margin: 50px;">This would be output (graphs, lists of indicators), and UI controls for the notebook (slider for date, selection list for chat). An example of DnD graph output like the one below can be dragged into the notebook.</div>
-    <img src="img/imr-mmr-example-graph.png" />
-    `);
-  
-  container.getElement().append( content );
-  });
+});
 
-//~ myLayout.registerComponent( 'example', function( container, state ){
-  //~ var counter = $('<div class="messageCounter">' + state.startCount + '</div>'),
-  //~ btnContainer = $('<div class="btnContainer"></div>'),
-      //~ count = state.startCount;
 
-  //~ container.getElement().append( btnContainer );
-  //~ });
 
-myLayout.init();
+
