@@ -36,7 +36,7 @@ class indicatorItemHandler {
         return `<span class="nb-item-selectable" data-ds="${d.ds}" data-ind-code="${d.indCode}">${i+1}. ${datasetDesc[d.ds].indNameLookup[d.indCode]}</span>`
       }).join(', </br>');
     
-    $(".nb-item-" + this.cfg.title + " .nb-content").html(values);
+    $(".nb-item-" + this.cfg.title + " .nb-content").html(MENU + values);
     
     $(".nb-item-" + this.cfg.title + " .nb-item-on-select").addClass("nb-item-hide");
     $(this.cfg.target).off("click", ".nb-item-selectable");
@@ -92,11 +92,27 @@ class indicatorItemHandler {
       animation: "shift-away",
       arrow: true,
       inertia: true,
+      distance: 20,
+      followCursor: "initial",
       duration: [500,0],
       //onShow:onKeyTipShow,
       onShown: graphPreview,
       //onHide:onKeyTipHide
     }); 
+    
+    tippy(".dots", {
+      //target: ".menu",
+      content: mContent,  // sets "this" to object this and not popup event this.
+      interactive: true,
+      theme: "light",
+      animation: "fade",
+      placement: "bottom",
+      trigger: "click",
+      hideOnClick: true,
+      distance: 0,
+      followCursor: "initial",
+      duration: 0
+    });
   }
   
   addValues(vals) {

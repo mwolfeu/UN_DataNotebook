@@ -44,11 +44,14 @@ class viewsItemHandler {
     var cfg0 = {
       title: "Lifetime risk of maternal death (%)",
       data: flatData,
+      legend: ['Chad','Mali'],
       x_accessor: "x",
       y_accessor: "y",
-      color: ['#C377FF'],
+      color: ['#C377FF', '#00A997'],
+      // aggregate_rollover: true,
       width: 400,
       height: 200,
+      right:50,
       target: "#example-graph-0"
     }
     MG.data_graphic(cfg0);
@@ -68,13 +71,15 @@ class viewsItemHandler {
         });
         
      var cfg1 = {
-      title: "Lifetime risk of maternal death (by country)",
+      title: "Lifetime risk of maternal death (1 in)",
       data: flatData,
+      legend: ['Chad'],
       x_accessor: "x",
       y_accessor: "y",
       color: ['#C377FF'],
       width: 400,
       height: 200,
+      right:50,
       target: "#example-graph-1"
     }
     

@@ -87,7 +87,7 @@ function managerInit(cfg) {
     Conversation.mwDispMsg('Six "WDI" example indicators have been loaded for Mali and Chad.');
     Conversation.mwDispMsg('Search between 2010 and 2016 for Chad and Mali for the word "maternal"');
     Conversation.mwDispMsg('The result has been added to the search window.');
-    Conversation.mwDispMsg('Search for indicators with slopes similar to result 3.');
+    Conversation.mwDispMsg('Search for indicators with slopes similar to result 3 for Chad.');
     Conversation.mwDispMsg('The result has been added to the search window.');
     Conversation.mwDispMsg('Save 4 5 6');
     Conversation.mwDispMsg('What would you like this new save group to be called?');
@@ -101,6 +101,8 @@ function managerInit(cfg) {
     Conversation.mwDispMsg('The graph has been added to views.');
     Conversation.mwDispMsg('Add an area graph of 1 for Chad in Graphs to Keep');
     Conversation.mwDispMsg('The graph has been added to views.');
+    Conversation.mwDispMsg('Share this notebook with pauline.gourlet@un.org');
+    Conversation.mwDispMsg('An invitation email has been sent.  ');
     cfg.forEach(c => itemRegister(c));
   });
    

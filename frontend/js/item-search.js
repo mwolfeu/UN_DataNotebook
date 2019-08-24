@@ -13,10 +13,10 @@ class searchItemHandler {
     if (cfg.values.length) this.doValues(); // make an array
     
     
-    
+    $('.nb-item-icon[Title="Remove"]').addClass("nb-item-hide"); // TODO GET RID OF HACK
     //--------------------------------------------------------------
-    
-    $("#nb-item-search .nb-content:eq(0)").append('<div id="filter-year"></div> <div class="control-tick-labels"> <div class="control-tick-label">1965</div><div class="control-tick-label">2018</div> </div> ');
+    // <div class="dots"></div>
+    $("#nb-item-search .nb-content:eq(0)").append(' <div id="filter-year"></div> <div class="control-tick-labels"> <div class="control-tick-label">1965</div><div class="control-tick-label">2018</div> </div> ');
     var yMin = 1965, yMax = 2018;
     $( "#nb-item-search .nb-content #filter-year" ).slider({
       range: true,
@@ -30,6 +30,8 @@ class searchItemHandler {
         $("#nb-item-search #filter-years-output").html(ui.values[0] + "-" + ui.values[1]);
       }
     });
+    
+    
     
     //--------------------------------------------------------------
     

@@ -1,7 +1,9 @@
 /*
 * TODO: 
-* Add triple dot / example
-* popup
+* OPTIONS:
+* Everything can be done in text, dnd, or clicking
+* All groups can be combined, copied, or decomposed
+* cluster on ANY health metadata
 */
 
 DNB = {}; // Global Vars
@@ -32,6 +34,28 @@ function getSeries(ds, indCode, c, years) {
     return val==''?null:+val
     });
 }
+//style="display:none;"
+var MENU = `
+<div class="dots"></div>  
+`
+
+var mContent = `
+</span id="dots-items-container">
+<span class="dots-items dots-items-checked"></span> <span>Auto Sort</span><br>
+<span><b>View</b></span><br>
+<span class="dots-items dots-items-checked"></span> <span>Min</span><br>
+<span class="dots-items dots-items-checked"></span> <span>Max</span><br>
+<span class="dots-items dots-items-checked"></span> <span>Mean</span><br>
+<span class="dots-items dots-items-checked"></span> <span>Median</span><br>
+<span class="dots-items dots-items-checked"></span> <span>Deviation</span><br>
+<span class="dots-items dots-items-checked"></span> <span>Sparsity</span><br>
+<span class="dots-items"></span> <span>Distribution</span><br>
+<span class="dots-items"></span> <span>First Quartile</span><br>
+<span class="dots-items dots-items-checked"></span> <span>Median Quantile</span><br>
+<span class="dots-items"></span> <span>Third Quartile</span><br>
+<span class="dots-items dots-items-checked"></span> <span>Preview Graph</span><br>
+</span>
+`
 
 //////////
 // MAIN //
@@ -71,6 +95,8 @@ $(document).ready(function() {
   managerInit(cfg);
   ds.obj.init(dsImportList); // init datasets
   $(".lm_content").css("overflow-y", "auto"); 
+    
+
 });
 
 

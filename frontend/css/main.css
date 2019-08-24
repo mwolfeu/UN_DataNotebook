@@ -1,3 +1,7 @@
+* {
+  outline: none; /* get rid of orange focus box */
+}
+
 .nb-item-container {
   display: flex;
   margin: 10px;
@@ -7,6 +11,7 @@
 .nb-content-wrapper {
   background-color: #fafafa;
   border-radius: 3%;
+  padding-right: 30px;
 } 
 
 .nb-item-title {
@@ -62,4 +67,62 @@
 /* chat */
 .chat-column {
   max-width: max-content !important;
+}
+
+/* MENU HACK */
+.dots {
+    position: relative;
+    right: -103%;
+}
+
+.dots::after  {
+  content: '\2807';
+}
+
+.tippy-tooltip {
+    text-align: left !important;
+}
+
+.tippy-tooltip.light-theme {
+    background-color: white !important;
+}
+
+svg {
+  margin: 15px;
+}
+
+.dots-items {
+  background-image: url('../img/square-regular.svg');
+  margin: 2px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dots-items.dots-items-checked {
+  background-image: url('../img/check-square-regular.svg');
+}
+
+/* SCROLL */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
