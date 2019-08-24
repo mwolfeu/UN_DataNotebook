@@ -13,5 +13,4 @@ function WDI_init (errors, rows) {
   
   datasetRegister("WDI", ds_info);
   nbItems["Indicators"].addValues([{ds:"WDI", indCode:"SH.MMR.RISK"}, {ds:"WDI", indCode:"SH.MMR.RISK.ZS"}, {ds:"WDI", indCode:"SH.DTH.COMM.ZS"}]);
-  // indicatorItemHandler({target: "#nb-item-container", addValues:[{ds:"WDI", indCode:"SH.MMR.RISK"}, {ds:"WDI", indCode:"SH.MMR.RISK.ZS"}, {ds:"WDI", indCode:"SH.DTH.COMM.ZS"}]})
 }

@@ -30,8 +30,8 @@ class dataset {
 						});
 					var exceptions = dsImportList[path].exceptions;
 					Object.keys(exceptions).forEach ((e) => { // build exception list
-						if (exceptions[e] == Number)
-							accessors[e] = +d[e];
+						if (exceptions[e][1] == Number)
+							accessors[e] = (n) => n==''?null:n;  // d[e]==''?null:+d[e];
 						});
 					return accessors;
 				}, 

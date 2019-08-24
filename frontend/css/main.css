@@ -1,4 +1,4 @@
-#nb-item-container {
+.nb-item-container {
   display: flex;
   margin: 10px;
   flex-flow: column;
@@ -42,6 +42,7 @@
 
 .nb-item-selectable {
   cursor: pointer;
+  outline: none; /* get rid of orange focus box */
 }
 
 .nb-item-selected {
@@ -53,3 +54,12 @@
   display: none;
 }
 
+/* golden layout */
+.lm_content {
+  overflow-y: auto;
+}
+
+/* chat */
+.chat-column {
+  max-width: max-content !important;
+}
